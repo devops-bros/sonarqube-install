@@ -28,6 +28,12 @@ sudo chown -R vagrant:vagrant /opt/sonarqube-9.9.0.65466
 
 cd /opt/sonarqube-9.9.0.65466/bin/linux-x86-64
 
+systemctl status firewalld && systemctl start firewalld && systemctl enable firewalld
+
+sudo firewall-cmd --permanent --add-port=9000/tcp
+
+sudo firewall-cmd --reload
+
 ./sonar.sh start
 
 echo "Sonarqube installed and started successfully"
